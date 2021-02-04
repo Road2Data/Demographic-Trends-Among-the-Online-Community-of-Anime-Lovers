@@ -13,17 +13,15 @@ ageScale = {
     np.nan: np.nan
 }
 
-
-def binGender(series_cell):
-    if series_cell == "Man":
+def binGender(seriesCell):
+    if seriesCell == "Man":
         return "Man"
-    elif series_cell == "Woman":
+    elif seriesCell == "Woman":
         return "Woman"
-    elif series_cell in ['GNC or Genderqueer', 'Fluid or Multigender', 'Agender', 'Otherwise Nonbinary']:
+    elif seriesCell in ['GNC or Genderqueer', 'Fluid or Multigender', 'Agender', 'Otherwise Nonbinary']:
         return "Enby"
     else:
         return np.nan
-
 
 bitExtractor = {
     "Yes": 1,
@@ -100,9 +98,9 @@ abbreviationsTwo = {
     np.nan: np.nan
 }
 
-def getGMT(series_cell):
+def getGMT(seriesCell):
     """Classify timezones and return a floating-point to represent GMT offset."""
-    e = str(series_cell).strip().upper()
+    e = str(seriesCell).strip().upper()
 
     if e in ["COTE", "WET", "UTC", "GMT"]:
         t = 0.0
@@ -163,7 +161,6 @@ def getGMT(series_cell):
         t = np.nan
     return t
 
-
 def getConsumptionSources(series):
     # Transform a "Check all that apply" into an array of bits.
     # Essentially, pd.get_dummies(series.apply(lambda x: x.split(";"))), but cleaner.
@@ -210,7 +207,6 @@ genre_two = {
 
 overH_ans = {"Yes": "overHYes", "No": "overHNo", "Maybe": "overHMaybe", np.nan: np.nan}
 inclusivity = {"Yes": "socIncYes", "No": "socIncNo", "Maybe": "socIncMaybe", np.nan: np.nan}
-
 
 if __name__ == '__main__':
     rr = pd.read_csv("SurveyResponses.csv")

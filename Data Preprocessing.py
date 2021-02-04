@@ -210,7 +210,6 @@ inclusivity = {"Yes": "socIncYes", "No": "socIncNo", "Maybe": "socIncMaybe", np.
 
 if __name__ == '__main__':
     rr = pd.read_csv("SurveyResponses.csv")
-    # raw responses
 
     # Clean Data.csv will...
     #   * Rename columns and entries for easy queries
@@ -242,11 +241,9 @@ if __name__ == '__main__':
     cd["socInc"] = rr["Do you think anime, manga, or the like could benefit from the better representation of certain social groups?"]
     cd["wantsMoreSeinen"] = rr["Were there more stories available for older, more mature audiences, would you consider reading or watching them?"].apply(lambda x: bitExtractor[x])
 
-
     # Machine-Readable Data.csv will...
     #   * Do everything Clean Data.csv does
     #   * Represent multiclass categorical variables with dummy variables
-
     mcCatKeys = ["gender", "continent", "education", "employmentStatus", "consumptionSources",
                 "platform", "firstFavGenre", "secondFavGenre", "socInc"]
     # ^ Col keys to multiclass categorical variables ^
